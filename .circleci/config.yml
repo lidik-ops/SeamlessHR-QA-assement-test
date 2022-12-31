@@ -5,16 +5,17 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/python:3.11.1
+      - image: cimg/base:2021.04
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
     
     steps:
       - checkout
-          
-      
-      - run: echo "circleci is fun"
+      - run:
+          name: Into my repo
+          command: |
+            cd /tests/test_cases
 
   integration:
     docker:
