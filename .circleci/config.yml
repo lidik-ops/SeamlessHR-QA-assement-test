@@ -1,28 +1,65 @@
-#Dynamic configuration
 version: 2.1
 
 # this allows you to use CircleCI's dynamic configuration feature
 setup: true
 
-# the continuation orb is required in order to use dynamic configuration
+# the path-filtering orb is required to continue a pipeline based on
+# the path of an updated fileset
 orbs:
-  continuation: circleci/continuation@0.3.1
+  path-filtering: circleci/path-filtering@0.1.3
 
-# our defined job, and its steps
-jobs:
-  setup:
-    executor: continuation/default #use continuation orb as an executor
-    steps:
-      - checkout # checkout code
-      - run: # run a command
-          name: Generate config
-          command: |
-            ./generate-config > generated_config.yml
-      - continuation/continue:
-          configuration_path: generated_config.yml # use newly generated config to continue
-
-# our single workflow, that triggers the setup job defined above
 workflows:
-  setup:
+  # the always-run workflow is always triggered, regardless of the pipeline parameters.
+  always-run:
     jobs:
-      - setup
+      # the path-filtering/filter job determines which pipeline
+      # parameters to update.
+      - path-filtering/filter:
+          name: check-updated-files
+          # 3-column, whitespace-delimited mapping. One mapping per
+          # line:
+          # <regex path-to-test> <parameter-to-set> <value-of-pipeline-parameter>
+          mapping: |
+            service1/.* run-build-service-1-job true
+            service2/.* run-build-service-2-job true
+          base-revision: main
+          # this is the path of the configuration we should trigger once
+          # path filtering and pipeline parameter value updates are
+          # complete. In this case, we are using the parent dynamic
+          # configuration itself.
+          config-path: .circleci/continue_config.yml
+
+
+
+
+
+
+
+#Dynamic configuration >> triggering different workflows that exist in different config files outside config.yml
+# version: 2.1
+
+# # this allows you to use CircleCI's dynamic configuration feature
+# setup: true
+
+# # the continuation orb is required in order to use dynamic configuration
+# orbs:
+#   continuation: circleci/continuation@0.3.1
+
+# # our defined job, and its steps
+# jobs:
+#   setup:
+#     executor: continuation/default #use continuation orb as an executor
+#     steps:
+#       - checkout # checkout code
+#       - run: # run a command
+#           name: Generate config
+#           command: |
+#             ./generate-config > generated_config.yml
+#       - continuation/continue:
+#           configuration_path: generated_config.yml # use newly generated config to continue
+
+# # our single workflow, that triggers the setup job defined above
+# workflows:
+#   setup:
+#     jobs:
+#       - setup
