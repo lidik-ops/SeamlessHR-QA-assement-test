@@ -8,8 +8,8 @@ jobs:
     # Primary container image where all steps run
      - image: cimg/python:3.11.1
         auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+          username: 'lykarungi'
+          password: dckr_pat_53yFn5vXW8zZpnaaQwPkZlsFeQE  # context / project UI env-var reference
     
     steps:
       - run: echo "Say hello to Yaml"
