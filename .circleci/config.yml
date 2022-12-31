@@ -12,7 +12,7 @@ jobs:
     
     steps:
       - checkout:
-          path: /tests/test_cases
+          path: cd /tests/test_cases
       
       - run: echo "circleci is fun"
 
