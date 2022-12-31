@@ -12,6 +12,8 @@ jobs:
       #   password: $DOCKERHUB_PASSWORD
     
     steps:
+      - run: cd SeamlessHR-QA-assement-test
+      - run: pip install -r requirements.txt
       - run: pytest -v -s test_cases/internet_page.py
 
   integration:
