@@ -12,7 +12,7 @@ jobs:
       #   password: $DOCKERHUB_PASSWORD
     
     steps:
-      - run: echo "Say hello to Yaml"
+      - run: echo "circleci is fun"
 
   integration:
     docker:
@@ -28,3 +28,4 @@ workflows:
       - integration
 
       
+# VS Code Extension Version: 1.5.1
