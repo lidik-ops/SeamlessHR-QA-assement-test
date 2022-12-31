@@ -11,7 +11,8 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     
     steps:
-      - checkout
+      - checkout:
+          path: https://github.com/lydia-karungi/SeamlessHR-QA-assement-test.git
       - run:
           name: Into my repo
           command: |
