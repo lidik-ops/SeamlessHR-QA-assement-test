@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Into my repo
           command: |
-            cd /tests/test_cases
+            echo "Lets go"
 
   integration:
     docker:
@@ -25,7 +25,11 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     
     steps:
-      - run: echo "Good to see you"
+      - checkout
+      - run:
+          name: Into my repo
+          command: |
+            ls -al
     
 workflows:
   build_and_integration:
