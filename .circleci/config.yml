@@ -11,8 +11,8 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     
     steps:
-      - checkout:
-          path: cd /tests/test_cases
+      - checkout
+          
       
       - run: echo "circleci is fun"
 
