@@ -17,7 +17,7 @@ jobs:
       - run: # run a command
           name: Generate config
           command: |
-            generated_config.yml
+            ./generate-config > generated_config.yml
       - continuation/continue:
           configuration_path: generated_config.yml # use newly generated config to continue
 
@@ -26,21 +26,3 @@ workflows:
   setup:
     jobs:
       - setup
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
