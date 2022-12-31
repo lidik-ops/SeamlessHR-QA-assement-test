@@ -12,7 +12,7 @@ jobs:
       #   password: $DOCKERHUB_PASSWORD
     
     steps:
-      - run: echo "Say hello to Yaml"
+      - run: pytest -v -s test_cases/internet_page.py
 
   integration:
     docker:
