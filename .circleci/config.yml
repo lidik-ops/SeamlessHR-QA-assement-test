@@ -15,27 +15,9 @@ jobs:
       - run:
           name: Into my repo
           command: |
-            echo "Lets go"
-
-  integration:
-    docker:
-      - image: cimg/python:3.11.1
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    
-    steps:
-      - checkout
-      - run:
-          name: Into my repo
-          command: |
             ls -al
-    
-workflows:
-  build_and_integration:
-    jobs:
-      - build
-      - integration
+
+
 
       
 # VS Code Extension Version: 1.5.1
