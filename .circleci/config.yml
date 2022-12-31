@@ -14,4 +14,17 @@ jobs:
     steps:
       - run: echo "Say hello to Yaml"
 
+  integration:
+    docker:
+      - image: cimg/python:3.11.1
+    
+    steps:
+      - run: echo "Good to see you"
+    
+workflows:
+  build_and_integration:
+    jobs:
+      - build
+      - integration
+
       
