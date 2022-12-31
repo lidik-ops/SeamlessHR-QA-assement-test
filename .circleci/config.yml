@@ -7,9 +7,9 @@ jobs:
     docker:
     #primary docker image where all the steps will run
       - image: cimg/python:3.11.1
-      # auth:
-      #   username: mydockerhub-user
-      #   password: $DOCKERHUB_PASSWORD
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
     
     steps:
       - run: echo "circleci is fun"
@@ -17,6 +17,9 @@ jobs:
   integration:
     docker:
       - image: cimg/python:3.11.1
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
     
     steps:
       - run: echo "Good to see you"
