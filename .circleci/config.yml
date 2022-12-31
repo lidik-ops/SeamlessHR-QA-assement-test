@@ -12,8 +12,7 @@ jobs:
       #   password: $DOCKERHUB_PASSWORD
     
     steps:
-      - run: pip install -r requirements.txt
-      - run: pytest -v -s test_cases/internet_page.py
+      - run: echo "Say hello to Yaml"
 
   integration:
     docker:
